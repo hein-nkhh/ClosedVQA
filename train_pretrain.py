@@ -14,7 +14,9 @@ def train(args):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # Dataset & DataLoader
-    pretrain_dataset_train, pretrain_dataset_val = PretrainDataset(Paths.PRETRAIN_TRAIN_JSON, Paths.PRETRAIN_VALID_JSON)
+    pretrain_dataset_train = PretrainDataset(Paths.PRETRAIN_TRAIN_JSON)
+    pretrain_dataset_val = PretrainDataset(Paths.PRETRAIN_VALID_JSON)
+    
     pretrain_loader_train = DataLoader(pretrain_dataset_train, batch_size=args.batch_size, shuffle=True, num_workers=4)
     pretrain_loader_val = DataLoader(pretrain_dataset_val, batch_size=args.batch_size, shuffle=False, num_workers=4)
 
